@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="490.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uspev.controllers.FXMLmainController">
+    <stylesheets>
+        <URL value="@fxmlmain.css" />
+    </stylesheets>
+   <children>
+      <MenuBar fx:id="mnpane" layoutX="7.0" layoutY="2.0" prefHeight="25.0" prefWidth="486.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+              <MenuItem fx:id="closd" mnemonicParsing="false" onAction="#onClose" text="Закрыть" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Справочники">
+            <items>
+              <MenuItem fx:id="ciclid" mnemonicParsing="false" onAction="#onCicl" text="Цикл дисциплин" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Данные">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Помощь">
+            <items>
+              <MenuItem mnemonicParsing="false" text="О программе" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="371.0" fitWidth="493.0" layoutX="-2.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/kollege.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
