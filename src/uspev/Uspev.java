@@ -37,7 +37,8 @@ public class Uspev extends Application {
             mainStage.setResizable(false);
             mainStage.getIcons().add(new Image("/uspev/images/book.png"));
             primaryStage.getScene().getWindow().hide();
-            mainStage.show();;
+            mainStage.show();
+          
         });
         
         StackPane root = new StackPane();
@@ -45,7 +46,7 @@ public class Uspev extends Application {
         
         Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Авторизация");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

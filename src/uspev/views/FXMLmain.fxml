@@ -23,11 +23,16 @@
           <Menu mnemonicParsing="false" text="Справочники">
             <items>
               <MenuItem fx:id="ciclid" mnemonicParsing="false" onAction="#onCicl" text="Цикл дисциплин" />
+                  <MenuItem fx:id="dscliplinid" mnemonicParsing="false" onAction="#onDisciplin" text="Дисциплины" />
+                  <MenuItem fx:id="otdelenieid" mnemonicParsing="false" onAction="#onOtdelenie" text="Отделения" />
+                  <MenuItem fx:id="gruppaid" mnemonicParsing="false" onAction="#onGruppa" text="Группы" />
+                  <MenuItem fx:id="prepodid" mnemonicParsing="false" onAction="#onPrepod" text="Преподаватели" />
+                  <MenuItem fx:id="studentid" mnemonicParsing="false" onAction="#onStudent" text="Студенты" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Данные">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="ocenkiid" mnemonicParsing="false" onAction="#onOcenki" text="Успеваемость" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Помощь">
