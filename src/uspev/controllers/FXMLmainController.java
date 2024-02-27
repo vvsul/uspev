@@ -37,6 +37,8 @@ public class FXMLmainController implements Initializable {
     private MenuItem studentid;
     @FXML
     private MenuItem ocenkiid;
+    @FXML
+    private MenuItem specialnostid;
 
    
     @Override
@@ -191,5 +193,26 @@ public class FXMLmainController implements Initializable {
         stage.show();
         
     }
+
+    @FXML
+    private void onSpecialnost(ActionEvent event) {
+        
+        FXMLLoader specialnostloader =new FXMLLoader();
+        specialnostloader.setLocation(getClass().getResource("/uspev/views/FXMLSpecialnost.fxml"));
+        try {
+            specialnostloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLmainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Parent specroot =specialnostloader.getRoot();
+        Stage specialnoststage=new Stage();
+        specialnoststage.setScene(new Scene(specroot));
+        specialnoststage.setTitle("Специальности");
+        Stage stage=(Stage)mnpane.getScene().getWindow();
+        stage.hide();
+        specialnoststage.showAndWait();
+        stage.show();
+    }
+  
     
 }
