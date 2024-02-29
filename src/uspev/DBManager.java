@@ -14,7 +14,7 @@ public class DBManager {
        
 try {
 if (connection == null || connection.isClosed()) {
-connection = DriverManager.getConnection("jdbc:h2:./uspev", "sa", "");
+connection = DriverManager.getConnection("jdbc:h2:./src/uspev/uspev.mv.db", "sa", "");
 Alert a=new Alert(AlertType.INFORMATION);
     a.setTitle("Успешно");
     a.show();
