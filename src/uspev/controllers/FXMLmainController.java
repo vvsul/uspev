@@ -3,6 +3,8 @@ package uspev.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +19,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import static uspev.DBManager.getConnection;
 
 public class FXMLmainController implements Initializable {
 
@@ -43,10 +46,15 @@ public class FXMLmainController implements Initializable {
     @FXML
     private MenuItem aboutid;
 
-   
+   public static Connection con=null;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            con=getConnection();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLmainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
     @FXML
