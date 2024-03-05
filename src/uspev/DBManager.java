@@ -73,6 +73,8 @@ public class DBManager {
 "	CONSTRAINT STUDENT_PK PRIMARY KEY (ID)\n" +
 ");";
        st.execute(zapros);
+       st.close();
+       
    }    
    
  private static java.sql.Connection connection=null;

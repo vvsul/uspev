@@ -20,9 +20,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import org.h2.tools.RunScript;
 import uspev.DBManager;
 import static uspev.DBManager.getConnection;
+import static uspev.DataInit.addData;
 import uspev.models.ModelCicldisciplin;
 
 
@@ -54,15 +54,22 @@ public class FXMLCicldisciplinController implements Initializable {
         return List;
     }
     @FXML
-    private void onAddCicle(ActionEvent event) {
+    private void onAddCicle(ActionEvent event) throws SQLException {
               
         
         
     }
 
     @FXML
-    private void onUpdateCicle(ActionEvent event) throws FileNotFoundException {
-        
+    private void onUpdateCicle(ActionEvent event) throws FileNotFoundException, SQLException {
+        System.out.println("проверка");
+       Statement statement=con.createStatement();
+       ResultSet rs=statement.executeQuery("SELECT * FROM CICLDISCIPLIN");
+       while (rs.next())
+       {
+           System.out.print(rs.getInt("ID")+"  ");
+           System.out.print(rs.getString("NAME")+"\n");
+       }
        
     }
 

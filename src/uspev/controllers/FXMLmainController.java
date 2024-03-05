@@ -20,6 +20,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import static uspev.DBManager.getConnection;
+import static uspev.DataInit.addData;
 
 public class FXMLmainController implements Initializable {
 
@@ -47,6 +48,8 @@ public class FXMLmainController implements Initializable {
     private MenuItem aboutid;
 
    public static Connection con=null;
+    @FXML
+    private MenuItem testid;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -244,6 +247,15 @@ public class FXMLmainController implements Initializable {
         stage.hide();
         aboutstage.showAndWait();
         stage.show();
+    }
+
+    @FXML
+    private void onTest(ActionEvent event) {
+        try {
+            addData();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLmainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
   
     

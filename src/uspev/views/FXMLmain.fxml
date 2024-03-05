@@ -39,6 +39,7 @@
             <Menu mnemonicParsing="false" text="Данные">
               <items>
                 <MenuItem fx:id="ocenkiid" mnemonicParsing="false" onAction="#onOcenki" text="Успеваемость" />
+                  <MenuItem fx:id="testid" mnemonicParsing="false" onAction="#onTest" text="Заполнить" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Помощь">
