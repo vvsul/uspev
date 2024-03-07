@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,13 +21,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import static uspev.DBManager.getConnection;
+import static uspev.DataInit.con;
 import uspev.models.ModelCicldisciplin;
 
 
@@ -41,7 +45,7 @@ public class FXMLCicldisciplinController implements Initializable {
     @FXML
     private Button cklbtdel;
     @FXML
-    private static TableView<ModelCicldisciplin> cicltable;
+    private  TableView<ModelCicldisciplin> cicltable;
     @FXML
     private TableColumn<ModelCicldisciplin, Integer> ciclnomer;
     @FXML
@@ -56,7 +60,9 @@ public class FXMLCicldisciplinController implements Initializable {
             ciclname.setCellValueFactory(new PropertyValueFactory("name"));
             con=getConnection();
            ObservableList<ModelCicldisciplin> list=getCicllist();
+          
            cicltable.setItems(list);
+           cicltable.getSelectionModel().select(0);
             
         } catch (SQLException ex) {
             Logger.getLogger(FXMLCicldisciplinController.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,32 +93,50 @@ public class FXMLCicldisciplinController implements Initializable {
              
    }
    
-   public static int getID(){
-       TablePosition pos = cicltable.getSelectionModel().getSelectedCells().get(0);
-        int row = pos.getRow();
-        ModelCicldisciplin item=cicltable.getItems().get(row);
-        TableColumn col = pos.getTableColumn();
-        String data = (String) col.getCellObservableValue(item).getValue();
-        System.out.println(data);
-    return 0;
+   public int getID(){
+     
+     int id=cicltable.getSelectionModel().getSelectedItem().getId();
+     return id;
 }
     
     @FXML
     private void onAddCicle(ActionEvent event) throws SQLException, IOException {
               
         ciclEditShow("Добавление цикла дисциплин");
-        
+       
     }
 
     @FXML
     private void onUpdateCicle(ActionEvent event) throws FileNotFoundException, SQLException, IOException {
         
         ciclEditShow("Редактирование цикла дисциплин");
+        
     }
 
     @FXML
-    private void onDelCicle(ActionEvent event) {
-       getID(); 
+    private void onDelCicle(ActionEvent event) throws SQLException {
+      String id= Integer.toString(getID()); 
+      Alert a=new Alert(Alert.AlertType.CONFIRMATION);
+    a.setTitle("Удаление!");
+    a.setContentText("Вы действительно хотите удалить выделенную запись?");
+   
+    Optional<ButtonType> option= a.showAndWait();
+    if (option.get()==ButtonType.OK){
+        
+              String zapros="DELETE FROM CICLDISCIPLIN WHERE ID=?";
+          
+      
+       PreparedStatement prepare=null;
+          try {
+              prepare = con.prepareStatement(zapros);
+          } catch (SQLException ex) {
+              Logger.getLogger(FXMLCicldisciplinController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        prepare.setString(1, id);
+        prepare.execute();
+        ciclshow();
+        
+    }
     }
     
     

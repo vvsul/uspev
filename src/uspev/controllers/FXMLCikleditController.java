@@ -38,6 +38,7 @@ public class FXMLCikleditController implements Initializable {
        PreparedStatement prepare=connection.prepareStatement(zapros);
         prepare.setString(1, cicltxt.getText());
         prepare.execute();
+        savebt.getScene().getWindow().hide();
     }
     else {
         String zapros="UPDATE CICLDISCIPLIN SET NAME=(?) WHERE ID=5";
@@ -45,6 +46,7 @@ public class FXMLCikleditController implements Initializable {
        PreparedStatement prepare=connection.prepareStatement(zapros);
         prepare.setString(1, cicltxt.getText());
         prepare.execute();
+        savebt.getScene().getWindow().hide();
     }
     }
 

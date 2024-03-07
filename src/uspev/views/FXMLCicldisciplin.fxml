@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uspev.controllers.FXMLCicldisciplinController">
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uspev.controllers.FXMLCicldisciplinController">
    <children>
       <TableView fx:id="cicltable" layoutX="16.0" layoutY="68.0" prefHeight="200.0" prefWidth="463.0">
         <columns>
@@ -13,7 +13,7 @@
           <TableColumn fx:id="ciclname" prefWidth="387.0" text="Наименование" />
         </columns>
       </TableView>
-      <Button fx:id="cklbtadd" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" onAction="#onAddCicle" prefHeight="25.0" prefWidth="127.0" text="Добавить" />
+      <Button fx:id="cklbtadd" layoutX="64.0" layoutY="22.0" mnemonicParsing="false" onAction="#onAddCicle" prefHeight="25.0" prefWidth="127.0" text="Добавить" />
       <Button fx:id="cklbtupdate" layoutX="200.0" layoutY="22.0" mnemonicParsing="false" onAction="#onUpdateCicle" prefHeight="25.0" prefWidth="119.0" text="Редактировать" />
       <Button fx:id="cklbtdel" layoutX="329.0" layoutY="22.0" mnemonicParsing="false" onAction="#onDelCicle" prefHeight="25.0" prefWidth="119.0" text="Удалить" />
    </children>
